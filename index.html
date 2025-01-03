@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homework 4</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>SRH Graduate Program Form</h1>
+  <form id="studentForm">
+    <div style="display: grid; grid-template-columns: auto auto; gap: 10px;">
+      <div>
+        <label for="first-name">Name:</label>
+        <input type="text" id="first-name" pattern="[A-Za-z]+" 
+          title="Only alphabetic characters allowed" required>
+      </div>
+      <div>
+        <label for="matriculation">Matriculation:</label>
+        <input type="text" id="matriculation" pattern="\d+" title="Only digits allowed" required>
+      </div>
+      <div>
+        <label for="middle-initial">M. Initial:</label>
+        <input type="text" id="middle-initial" pattern="[A-Za-z]" 
+          title="Only a single alphabetic character allowed" required>
+      </div>
+      <div>
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" required>
+      </div>
+      <div>
+        <label for="last-name">Last Name:</label>
+        <input type="text" id="last-name" pattern="[A-Za-z]+" 
+          title="Only alphabetic characters allowed" required>
+      </div>
+      <div>
+        <label for="program">Program:</label>
+        <select id="program" required>
+          <option value="" disabled selected>Select your program</option>
+          <option value="Software Development">Software Development</option>
+          <option value="Data Science">Data Science</option>
+        </select>
+      </div>
+      <div>
+        <label for="country">I am From:</label>
+        <select id="country" required>
+          <option value="" disabled selected>Select your country</option>
+          <option value="Germany">Germany</option>
+          <option value="USA">USA</option>
+        </select>
+      </div>
+      <div>
+        <label for="start-date">Started in:</label>
+        <input type="date" id="start-date" required>
+      </div>
+    </div>
+
+    <br>
+
+    <label>I've heard about this graduate program from:</label>
+    <div style="display: flex; gap: 15px;">
+      <div>
+        <input type="checkbox" id="media" value="Media">
+        <label for="media">Media</label>
+      </div>
+      <div>
+        <input type="checkbox" id="add" value="Ad">
+        <label for="add">Ad</label>
+      </div>
+      <div>
+        <input type="checkbox" id="agency" value="Agency">
+        <label for="agency">Agency</label>
+      </div>
+      <div>
+        <input type="checkbox" id="other" value="Other">
+        <label for="other">Other</label>
+      </div>
+    </div>
+    
+    <br>    
+
+    <label>When I finish my study, I will:</label>
+    <div style="display: flex; gap: 15px;">
+      <div style="display: flex; align-items: center;">
+        <input type="radio" name="future" id="return" value="Return to my country" required>
+        <label for="return" style="margin-left: 5px;">Return to my country</label>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <input type="radio" name="future" id="job" value="Find a job in Europe">
+        <label for="job" style="margin-left: 5px;">Find a job in Europe</label>
+      </div>
+    </div>
+
+    <br>
+
+    <label for="feedback">Feedback for the course:</label>
+    <textarea id="feedback" required></textarea><br>
+
+    <p>
+      
+      <p>I will write a paragraph for each methodology of <a href="https://en.wikipedia.org/wiki/Systems_development_life_cycle" target="_blank">SDLC</a>. There are many of them, but I will suggest a few. My suggestion and reasons are:</p>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <p>Among so many SDLC Methodologies, the ones that are in the AGILE classification are better. Among AGILE SDLC Methods, I have also a few suggestions:</p>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <p>In this software development and application course of <a href="https://www.srh-hochschule-berlin.de/en/" target="_blank">SRH</a>, we learn the following:</p>
+  <ul>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <p>I have used <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS</a> in this webpage, and there are three ways to include CSS in a webpage as follows:</p>
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+
+  <p>The reasons CSS is used in the webpage are:</p>
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+
+  <p>We also use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> in webpage development. The main reasons are as follows:</p>
+  <ol>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ol>
+
+  <p>I have done this project myself and accept the consequences if found otherwise.</p>
+  <p>You can reach me at:</p> <input type="email" id="email" placeholder="Enter your email">
+  
+
+  </form>
+
+  <script>
+    document.querySelectorAll('input[type="text"]').forEach(input => {
+      input.addEventListener('input', function () {
+        if (!this.value.match(this.pattern)) {
+          alert(this.title);
+          this.value = '';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
