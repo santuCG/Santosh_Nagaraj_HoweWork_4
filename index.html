@@ -4,146 +4,161 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homework 4</title>
+  
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  </style>
 </head>
 <body>
-  <h1>SRH Graduate Program Form</h1>
+  <h1>Welcome to My Homepage</h1>
   <form id="studentForm">
-    <div style="display: grid; grid-template-columns: auto auto; gap: 10px;">
-      <div>
-        <label for="first-name">Name:</label>
-        <input type="text" id="first-name" pattern="[A-Za-z]+" 
-          title="Only alphabetic characters allowed" required>
+    <div class="form-container">
+
+      <div class="form-column">
+          <fieldset>
+          <label for="firstName">First Name:</label>
+          <span id="firstNameError" style="color: red; display: none;">Only alphabetic characters are allowed.</span>
+          <input type="text" id="firstName" name="firstName" required pattern="[A-Za-z]+">
+
+          <label for="middleInitial">Middle Initial:</label>
+          <input type="text" id="middleInitial" name="middleInitial" maxlength="1" pattern="[A-Za-z]">
+
+          <label for="lastName">Last Name:</label>
+          <span id="lastNameError" style="color: red; display: none;">Only alphabetic characters are allowed.</span>
+          <input type="text" id="lastName" name="lastName" required pattern="[A-Za-z]+">
+
+          <label for="country">I am from:</label>
+          <select id="country" name="country">
+              <option value="Australia">USA</option>
+              <option value="India">India</option>
+              <option value="Germany">Germany</option>
+              <option value="Turkey">Turkey</option>
+              <option value="USA">USA</option>
+              <option value="Other">Other</option>
+          </select>
+      </fieldset>
       </div>
-      <div>
-        <label for="matriculation">Matriculation:</label>
-        <input type="text" id="matriculation" pattern="\d+" title="Only digits allowed" required>
+
+      <div class="form-column">
+          <fieldset>
+          <label for="matriculation">Matriculation Number:</label>
+          <span id="matriculationPatternError" style="color: red; display: none;">Matriculation number must contain only digits</span>
+          <input type="text" id="matriculation" name="matriculation" required pattern="\d+">
+
+          <label for="semester">Semester:</label>
+          <input type="number" id="semester" name="semester" min="1" max="4" required>
+
+          <label for="program">Graduate Program:</label>
+          <select id="program" name="program">
+              <option value="Cybersecurity">Msc Computer Science focused on Cybersecurity</option>
+              <option value="Data Science">Msc Computer Science focused on Big data and AI</option>
+              <option value="Software Engineering">Msc Applied Computer Science</option>
+          </select>
+
+          <label for="startDate">Start Date:</label>
+          <input type="date" id="startDate" name="startDate" required>
+      </fieldset>
       </div>
-      <div>
-        <label for="middle-initial">M. Initial:</label>
-        <input type="text" id="middle-initial" pattern="[A-Za-z]" 
-          title="Only a single alphabetic character allowed" required>
-      </div>
-      <div>
-        <label for="semester">Semester:</label>
-        <input type="text" id="semester" required>
-      </div>
-      <div>
-        <label for="last-name">Last Name:</label>
-        <input type="text" id="last-name" pattern="[A-Za-z]+" 
-          title="Only alphabetic characters allowed" required>
-      </div>
-      <div>
-        <label for="program">Program:</label>
-        <select id="program" required>
-          <option value="" disabled selected>Select your program</option>
-          <option value="Software Development">Software Development</option>
-          <option value="Data Science">Data Science</option>
-        </select>
-      </div>
-      <div>
-        <label for="country">I am From:</label>
-        <select id="country" required>
-          <option value="" disabled selected>Select your country</option>
-          <option value="Germany">Germany</option>
-          <option value="USA">USA</option>
-        </select>
-      </div>
-      <div>
-        <label for="start-date">Started in:</label>
-        <input type="date" id="start-date" required>
-      </div>
-    </div>
+
+  </div>
 
     <br>
 
-    <label>I've heard about this graduate program from:</label>
-    <div style="display: flex; gap: 15px;">
-      <div>
-        <input type="checkbox" id="media" value="Media">
-        <label for="media">Media</label>
-      </div>
-      <div>
-        <input type="checkbox" id="add" value="Ad">
-        <label for="add">Ad</label>
-      </div>
-      <div>
-        <input type="checkbox" id="agency" value="Agency">
-        <label for="agency">Agency</label>
-      </div>
-      <div>
-        <input type="checkbox" id="other" value="Other">
-        <label for="other">Other</label>
-      </div>
-    </div>
-    
-    <br>    
+    <label>I've heard about this graduate program from:</label>  
+    <div class="radio-group">
+      <label>
+      <input type="checkbox" name="source" value="Media" required>
+      Media
+      </label>
+      <label>
+      <input type="checkbox" name="source" value="Ad">
+      Ad
+      </label>
+      <label>
+      <input type="checkbox" name="source" value="Agency">
+      Agency
+      </label>
+      <label>
+      <input type="checkbox" name="source" value="Other">
+      Other
+      </label>
+   </div>
 
+   <br>
+   
     <label>When I finish my study, I will:</label>
-    <div style="display: flex; gap: 15px;">
-      <div style="display: flex; align-items: center;">
-        <input type="radio" name="future" id="return" value="Return to my country" required>
-        <label for="return" style="margin-left: 5px;">Return to my country</label>
-      </div>
-      <div style="display: flex; align-items: center;">
-        <input type="radio" name="future" id="job" value="Find a job in Europe">
-        <label for="job" style="margin-left: 5px;">Find a job in Europe</label>
-      </div>
-    </div>
+    <div class="radio-group">
+      <label>
+      <input type="radio" name="source" value="Return to my country" required>
+      Return to my country
+      </label>
+      <label>
+      <input type="radio" name="source" value="Find a job in europe">
+      Find a job in europe
+      </label>
+      <label>
+      <input type="radio" name="source" value="Do a practical training and then decide">
+      Do a practical training and then decide
+      </label>
+   </div>
 
     <br>
 
     <label for="feedback">Feedback for the course:</label>
-    <textarea id="feedback" required></textarea><br>
+    <textarea id="feedback" required>Hasan Dag is the BEST</textarea><br>
 
     <p>
-      
-      <p>I will write a paragraph for each methodology of <a href="https://en.wikipedia.org/wiki/Systems_development_life_cycle" target="_blank">SDLC</a>. There are many of them, but I will suggest a few. My suggestion and reasons are:</p>
+      <p>I will write a paragraph for each methodology of <a href="https://en.wikipedia.org/wiki/Software_development_process" target="_blank">SDLC</a>. There are many of them, but I will suggest a few. My suggestion and reasons are:</p>
   <ul>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Agile Methodologies</li>
+    <li>Spiral Model</li>
+    <li>Incremental SDLC Model​</li>
   </ul>
 
   <p>Among so many SDLC Methodologies, the ones that are in the AGILE classification are better. Among AGILE SDLC Methods, I have also a few suggestions:</p>
   <ul>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Adaptive Software Development (ASD)</li>
+    <li>Rational Unify Process (RUP)​</li>
+    <li>Feature Driven Development (FDD) ​</li>
+    <li> Crystal Clear​</li>
+    <li>Scrum</li>
   </ul>
 
-  <p>In this software development and application course of <a href="https://www.srh-hochschule-berlin.de/en/" target="_blank">SRH</a>, we learn the following:</p>
+  <p>In this software development and application course of <a href="https://www.srh-university.de/de/" target="_blank">SRH</a>, we learn the following:</p>
   <ul>
-    <li></li>
-    <li></li>
+    <li>Basic Computer Concepts and Programming Concepts</li>
+    <li>Overview of Software Development</li>
+    <li>Strings, User defined data structures: Structs</li>
+    <li>Data Structures</li>
+    <li>Introduction to Object-Oriented Programming</li>
+    <li>Introduction to Web Development and Databases</li>
   </ul>
 
-  <p>I have used <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS</a> in this webpage, and there are three ways to include CSS in a webpage as follows:</p>
+  <p>I have used <a href="https://en.wikipedia.org/wiki/CSS" target="_blank">CSS</a> in this webpage, and there are three ways to include CSS in a webpage as follows:</p>
   <ol>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Inline CSS       : Adding styles directly inside an HTML element using the STYLE attribute.</li>
+    <li>Internal CSS  : Defining styles within a STYLE tag in the HEAD section of the HTML document.</li>
+    <li>External CSS  : Linking an external CSS file using a LINK tag in the HEAD section.</li>
   </ol>
 
   <p>The reasons CSS is used in the webpage are:</p>
   <ol>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Style and format the layout of the webpage.</li>
+    <li>Enhance the visual appeal and user experience by applying colors and fonts.</li>
   </ol>
 
-  <p>We also use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript</a> in webpage development. The main reasons are as follows:</p>
-  <ol>
-    <li></li>
-    <li></li>
-    <li></li>
-  </ol>
+  <p>We also use <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> in webpage development. The main reasons are as follows:</p>
+  <ul>
+    <li>Makes webpages interactive with buttons, forms, and animations.</li>
+    <li>Enhances navigation and responsiveness.</li>
+  </ul>
 
   <p>I have done this project myself and accept the consequences if found otherwise.</p>
-  <p>You can reach me at:</p> <input type="email" id="email" placeholder="Enter your email">
+  <p>You can reach me at:</p> <input type="email" id="email" value="santosh.nagaraj@stud.srh-university.de" readonly>
   
-
   </form>
 
   <script>
