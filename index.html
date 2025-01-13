@@ -10,6 +10,9 @@
     body {
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     }
+    h1 {
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -20,12 +23,14 @@
       <div class="form-column">
           <fieldset>
           <label for="firstName">First Name:</label>
+          <span id="firstNameError" style="color: red; display: none;">Only alphabetic characters are allowed.</span>
           <input type="text" id="firstName" name="firstName" required pattern="[A-Za-z]+">
 
           <label for="middleInitial">Middle Initial:</label>
           <input type="text" id="middleInitial" name="middleInitial" maxlength="1" pattern="[A-Za-z]">
 
           <label for="lastName">Last Name:</label>
+          <span id="lastNameError" style="color: red; display: none;">Only alphabetic characters are allowed.</span>
           <input type="text" id="lastName" name="lastName" required pattern="[A-Za-z]+">
 
           <label for="country">I am from:</label>
@@ -43,6 +48,7 @@
       <div class="form-column">
           <fieldset>
           <label for="matriculation">Matriculation Number:</label>
+          <span id="matriculationPatternError" style="color: red; display: none;">Matriculation number must contain only digits</span>
           <input type="text" id="matriculation" name="matriculation" required pattern="\d+">
 
           <label for="semester">Semester:</label>
@@ -105,7 +111,7 @@
     <br>
 
     <label for="feedback">Feedback for the course:</label>
-    <textarea id="feedback" required>We have learnt all the concepts regarding the Software Development which includes Basic Computer Concepts and Programming Concepts, Overview of Software Development, Strings, User defined data structures: Structs, Data Structures, Introduction to Object-Oriented Programming, Introduction to Web Development and Databases.  Professor has helped us understand all the concepts clearly by providing us with multiple examples. </textarea><br>
+    <textarea id="feedback" required>We have learnt all the concepts regarding the Software Development. Professor has helped us understand Advanced C language with multiple examples also he has explained the concepts related to SDLC. </textarea><br>
 
     <p>
       <p>I will write a paragraph for each methodology of <a href="https://en.wikipedia.org/wiki/Software_development_process" target="_blank">SDLC</a>. There are many of them, but I will suggest a few. My suggestion and reasons are:</p>
@@ -161,27 +167,30 @@
   <script>
     document.querySelectorAll('input[type="text"], input[type="email"]').forEach(input => {
       input.addEventListener('input', function () {
-        const pattern = new RegExp(this.getAttribute('pattern'));
-        const id = this.id;
-  
+        const pattern = new RegExp(this.getAttribute('pattern')); // Get the pattern as a RegExp
+        const id = this.id; // Get the input's ID to determine the field
+
         if (this.value && !pattern.test(this.value)) {
+          // Show appropriate alert messages based on the field
           switch (id) {
             case 'firstName':
             case 'middleInitial':
             case 'lastName':
-              alert('Nothing other than alpha characters can be entered');
+              alert('Nothing other than alpha characters can be entered to the name, middle initial, and last name field.');
               break;
             case 'matriculation':
               alert('Matriculation can only contain digits (0-9).');
               break;
+            case 'email':
+              alert('E-mail field must have the correct form of an e-mail address.');
+              break;
             default:
               alert('Invalid Input.');
           }
-          this.value = '';
+          this.value = ''; // Clear the invalid input
         }
       });
     });
   </script>
-  
 </body>
 </html>
